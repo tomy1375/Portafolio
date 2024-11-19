@@ -6,7 +6,7 @@ import ExperienciaIcon from "../components/icons/ExperienciaIcon.astro"
 import ProyectoIcon from "../components/icons/ProyectosIcon.astro"
 import TecnologiasIcon from "../components/icons/TecnologiasIcon.astro"
 import ContactoIcon from "../components/icons/ContactoIcon.astro"
-import { ProjectorIcon } from "lucide-react"
+import { ProjectorIcon } from 'lucide-react'
 ---
 
 <div data-layername="landingpage" id="inicio" class="flex overflow-hidden flex-col bg-neutral-900 w-screen h-screen">
@@ -27,7 +27,6 @@ import { ProjectorIcon } from "lucide-react"
             <a href="#experiencia" class="btnd group">
               <ExperienciaIcon className="w-9 h-9 mr-1 group-hover:filter transition-all duration-300"/>
               <span class="transition-all duration-300">Experiencia</span>
-              <!-- <HomeIcons className="mr-1 group-hover:filter transition-all duration-300"/> -->
             </a>
             <a href="#proyectos" class="btnd group">
               <ProyectoIcon className="w-9 h-9 mr-1 group-hover:filter transition-all duration-300"/>
@@ -39,7 +38,6 @@ import { ProjectorIcon } from "lucide-react"
             </a>
             <a href="#contacto" class="btnd group">
               <ContactoIcon/>
-              <!-- <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/50bd507349116aabac70884f9d1522fd06afe88d6ff5a5d351a4836dc7a63a00?placeholderIfAbsent=true&apiKey=9fe8dc76776646f4a6bc648caa0a3bac" alt="" class="object-contain z-10 mt-0 aspect-square w-[30px] inline-block mr-1 group-hover:filter group-hover:brightness-125 transition-all duration-300" /> -->
               <span class="transition-all duration-300">Contacto</span>
             </a>
           </nav>
@@ -113,7 +111,6 @@ import { ProjectorIcon } from "lucide-react"
 
   .navbar-scrolled {
     background-color: rgba(0, 0, 0, 0.8);
-    /* padding-top: 0.1rem; */
     padding-bottom: 0.5rem;
   }
 
@@ -135,23 +132,26 @@ import { ProjectorIcon } from "lucide-react"
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
-        navbar.classList.add('navbar-scrolled');
+        navbar?.classList.add('navbar-scrolled');
       } else {
-        navbar.classList.remove('navbar-scrolled');
+        navbar?.classList.remove('navbar-scrolled');
       }
     });
 
-    navLinks.forEach((link) => {
+    navLinks.forEach((link: Element) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+        const href = link.getAttribute('href');
+        if (href) {
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         }
       });
     });
